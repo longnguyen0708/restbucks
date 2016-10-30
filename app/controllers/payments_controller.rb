@@ -29,14 +29,14 @@ class PaymentsController < ApplicationController
   def update
     @payment = Payment.find_by(order_id: params[:id])
     @order = Order.find(params[:id])
-    if (params[:amount] != @order.cost)
+    if ((params[:amount]).to_f != @order.cost)
       render status: :method_not_allowed, json: @payment
     else
       OrderStateMgr.instance(self).set_curr_state(@order)
       if OrderStateMgr.instance(self).payment
         if @payment.update(payment_params) and @order.update({:status => OrderStateMgr.instance(self).get_state_str})
           links = OrderStateMgr.instance(self).hypermedia
-          render json: @order.to_json(links), location: @order
+          render json: @order.to_json(links)
         else
           render status: :bad_request, json: @payment.as_json("error" => @payment.errors.full_messages[0])
         end
