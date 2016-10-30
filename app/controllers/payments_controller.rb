@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
           links = OrderStateMgr.instance(self).hypermedia
           render json: @order.to_json(links), location: @order
         else
-          render status: :bad_request, json: @payment.as_json(methods: :error_msg)
+          render status: :bad_request, json: @payment.as_json("error" => @payment.errors.full_messages[0])
         end
       else
         render json: @payment, status: :conflict

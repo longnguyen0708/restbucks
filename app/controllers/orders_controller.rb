@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
         render status: :internal_server_error
       end
     else
-      render status: :bad_request, json: @order.as_json(methods: :error_msg)
+      render status: :bad_request, json: @order.as_json("error" => @order.errors.full_messages[0])
     end
   end
 

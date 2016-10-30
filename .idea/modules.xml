@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../api_app_name/.idea/api_app_name.iml" filepath="$PROJECT_DIR$/../api_app_name/.idea/api_app_name.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/restbucks.iml" filepath="$PROJECT_DIR$/.idea/restbucks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../restbucks_client/.idea/restbucks_client.iml" filepath="$PROJECT_DIR$/../restbucks_client/.idea/restbucks_client.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/appthority/restbucks_frontend/.idea/restbucks_frontend.iml" filepath="$USER_HOME$/Documents/appthority/restbucks_frontend/.idea/restbucks_frontend.iml" />
     </modules>
   </component>
 </project>

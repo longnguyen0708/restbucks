@@ -10,7 +10,9 @@ class Payment < ApplicationRecord
   validates :expiry_year, numericality: { only_integer: true,  greater_than: 2015, less_than_or_equal_to: 2100}, on: :update
   validates :amount, numericality: {greater_than: 0}, on: :update
 
-  def error_msg
-    return errors.full_messages[0]
+  def as_json(options = {})
+    json = super(options)
+    json = json.merge(options)
+    json
   end
 end
