@@ -2,6 +2,7 @@ require 'order_state_mgr'
 
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
+  before_action :authenticate_user_from_token
 
   DONE_PREPARING_TIME = 60
 

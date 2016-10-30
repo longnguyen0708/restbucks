@@ -1,9 +1,9 @@
 class ReceiptsController < ApplicationController
-  # DELETE /receipts/1
+  before_action :authenticate_user_from_token
   def index
     render status: :not_found
   end
-
+  # DELETE /receipts/1
   def complete
     @order = Order.find(params[:id])
     OrderStateMgr.instance(self).set_curr_state(@order)

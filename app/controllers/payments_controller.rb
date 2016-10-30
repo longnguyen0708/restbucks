@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   #before_action :set_payment, only: [:show, :update, :destroy]
+  before_action :authenticate_user_from_token
 
   # GET /payments
   def index
