@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_user_from_token, except: [:create]
 
   # GET /users
   def index
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: @user, status: :created, location: @user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: {"error" => @user.errors.full_messages[0]}, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +47,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :name, :password, :auth_token)
+      params.require(:user).permit(:email, :name, :password)
     end
 end
