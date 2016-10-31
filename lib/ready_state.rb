@@ -32,6 +32,6 @@ class ReadyState < State
   end
 
   def get_str
-    'ready'
+    'Ready'
   end
 end

@@ -32,6 +32,6 @@ class PaymentExpectedState < State
   end
 
   def get_str
-    'payment expected'
+    'Payment expected'
   end
 end

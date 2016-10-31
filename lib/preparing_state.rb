@@ -29,11 +29,12 @@ class PreparingState < State
   end
 
   def hypermedia
-    puts "PreparingState.hypermedia " + @order_state_mgr.controller.url_for(:only_path => false, :controller => 'receipts') + "/#{@order_state_mgr.order_id}"
-    {'receipts' => @order_state_mgr.controller.url_for(:only_path => false, :controller => 'receipts') + "/#{@order_state_mgr.order_id}"}
+  #  puts "PreparingState.hypermedia " + @order_state_mgr.controller.url_for(:only_path => false, :controller => 'receipts') + "/#{@order_state_mgr.order_id}"
+  #  {'receipts' => @order_state_mgr.controller.url_for(:only_path => false, :controller => 'receipts') + "/#{@order_state_mgr.order_id}"}
+    {}
   end
 
   def get_str
-    'preparing'
+    'Preparing'
   end
 end

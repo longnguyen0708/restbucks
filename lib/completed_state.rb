@@ -29,6 +29,6 @@ class CompletedState < State
   end
 
   def get_str
-    'completed'
+    'Completed'
   end
 end
