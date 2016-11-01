@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
   before_action :authenticate_user_from_token
 
-  DONE_PREPARING_TIME = 60
+  DONE_PREPARING_TIME = 10
 
   # GET /orders
   def index
@@ -16,11 +16,15 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   def show
-    preparing_time = ((Time.now - @order.updated_at) * 24 * 60 * 60).to_i
-    puts "OrdersController.show preparing_time: #{preparing_time}"
-    if preparing_time > DONE_PREPARING_TIME
-      if OrderStateMgr.instance(self).barista_done_preparing
-        @order.update(:status => OrderStateMgr.instance(self).get_state_str)
+    if @order.paid_time
+      puts "paid_time #{@order.paid_time.localtime}"
+      puts "now_time #{Time.now}"
+      preparing_time = (Time.now - @order.paid_time.localtime).to_i
+      puts "OrdersController.show preparing_time: #{preparing_time}"
+      if preparing_time > DONE_PREPARING_TIME
+        if OrderStateMgr.instance(self).barista_done_preparing
+          @order.update(:status => OrderStateMgr.instance(self).get_state_str)
+        end
       end
     end
 

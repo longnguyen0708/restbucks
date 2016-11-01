@@ -11,6 +11,12 @@ class Order < ApplicationRecord
 
   def as_json(options = {})
     json = super(options)
+    #puts json
+
+    if json["paid_time"]
+      json["paid_time"] = json["paid_time"].localtime.strftime("%c")
+    end
+    #puts "after paid_time #{json[:paid_time]}"
     json = json.merge(options)
     json
   end

@@ -35,7 +35,8 @@ class PaymentsController < ApplicationController
     else
       OrderStateMgr.instance(self).set_curr_state(@order)
       if OrderStateMgr.instance(self).payment
-        if @payment.update(payment_params) and @order.update({:status => OrderStateMgr.instance(self).get_state_str})
+        puts "pay time: #{Time.now}"
+        if @payment.update(payment_params) and @order.update({:status => OrderStateMgr.instance(self).get_state_str, :paid_time => Time.now})
           links = OrderStateMgr.instance(self).hypermedia
           render json: @order.to_json(links)
         else
