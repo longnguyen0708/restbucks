@@ -1,4 +1,5 @@
 require 'order_state_mgr'
+require 'order_cost_mgr'
 
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
@@ -79,7 +80,12 @@ class OrdersController < ApplicationController
 
 
   def calculate_cost(order)
-    2
+    OrderCostMgr.instance.set_drink(@order.name)
+    OrderCostMgr.instance.set_quantity(@order.quantity)
+    OrderCostMgr.instance.set_milk(@order.milk)
+    OrderCostMgr.instance.set_size(@order.size)
+    OrderCostMgr.instance.set_shots(@order.shots)
+    OrderCostMgr.instance.calculate_cost
   end
 
   private
