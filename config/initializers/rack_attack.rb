@@ -1,7 +1,6 @@
 class Rack::Attack
 
-  # `Rack::Attack` is configured to use the `Rails.cache` value by default,
-  # but you can override that by setting the `Rack::Attack.cache.store` value
+
   Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
   # Allow all local traffic
@@ -20,7 +19,7 @@ class Rack::Attack
     [
         429,
         {'Content-Type' => 'application/json', 'Retry-After' => retry_after.to_s},
-        [{error: "Throttle limit reached. Retry later."}.to_json]
+        [{error: "Throttle limit reached."}.to_json]
     ]
   }
 end
