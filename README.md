@@ -1,3 +1,3 @@
 # README
 
-Restbucks Rail 5 API
+Restbucks Rails 5 API
