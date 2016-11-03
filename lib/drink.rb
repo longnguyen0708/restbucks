@@ -13,17 +13,17 @@ class Drink < CostDecorator
   def price
     puts 'drink price'
     case @option
-      when "Latte"
+      when "Pumpkin Spice Latte"
         2.5
       when "Cappuccino"
         3
-      when "Mocha"
+      when "Iced Chile Mocha"
         2.5
-      when "Macchiato"
+      when "Caramel Macchiato"
         2
       when "Espresso"
         3
-      when "Americano"
+      when "Caffe Americano"
         2
       else
         0
